@@ -18,7 +18,6 @@ option (gogoproto.goproto_getters_all) = false;
 service Demo {
   rpc Ping(.google.protobuf.Empty) returns (.google.protobuf.Empty);
   rpc SayHello(HelloReq) returns (.google.protobuf.Empty);
-  rpc HelloWorld(HelloReq) returns(HelloResp);
   rpc SayHelloURL(HelloReq) returns (HelloResp) {
     option (google.api.http) = {
       get: "/kratos-demo/say_hello"

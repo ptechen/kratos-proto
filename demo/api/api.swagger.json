@@ -16,41 +16,6 @@
         "application/json"
     ],
     "paths": {
-        "/demo.service.v1.Demo/HelloWorld": {
-            "get": {
-                "summary": "/demo.service.v1.Demo/HelloWorld",
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "code": {
-                                    "type": "integer"
-                                },
-                                "message": {
-                                    "type": "string"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/.demo.service.v1.HelloResp"
-                                }
-                            }
-                        }
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "tags": [
-                    "demo.service.v1.Demo"
-                ]
-            }
-        },
         "/demo.service.v1.Demo/Ping": {
             "get": {
                 "summary": "/demo.service.v1.Demo/Ping",
