@@ -3,9 +3,9 @@ module github.com/ptechen/kratos-proto
 go 1.13
 
 require (
-	github.com/bilibili/kratos v0.3.3
+	github.com/bilibili/kratos v0.3.2-0.20191224125553-6e1180f53a8e
 	github.com/gogo/protobuf v1.3.1
-	github.com/golang/protobuf v1.3.5
-	google.golang.org/genproto v0.0.0-20200313141609-30c55424f95d
-	google.golang.org/grpc v1.28.0
+	github.com/golang/protobuf v1.3.2
+	google.golang.org/genproto v0.0.0-20191223191004-3caeed10a8bf
+	google.golang.org/grpc v1.24.0
 )
