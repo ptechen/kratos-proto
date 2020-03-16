@@ -27,6 +27,7 @@ var _ binding.StructValidator
 
 var PathDemoPing = "/demo.service.v1.Demo/Ping"
 var PathDemoSayHello = "/demo.service.v1.Demo/SayHello"
+var PathDemoHelloWorld = "/demo.service.v1.Demo/HelloWorld"
 var PathDemoSayHelloURL = "/kratos-demo/say_hello"
 
 // DemoBMServer is the server API for Demo service.
@@ -34,6 +35,8 @@ type DemoBMServer interface {
 	Ping(ctx context.Context, req *google_protobuf1.Empty) (resp *google_protobuf1.Empty, err error)
 
 	SayHello(ctx context.Context, req *HelloReq) (resp *google_protobuf1.Empty, err error)
+
+	HelloWorld(ctx context.Context, req *HelloReq) (resp *HelloResp, err error)
 
 	SayHelloURL(ctx context.Context, req *HelloReq) (resp *HelloResp, err error)
 }
@@ -58,6 +61,15 @@ func demoSayHello(c *bm.Context) {
 	c.JSON(resp, err)
 }
 
+func demoHelloWorld(c *bm.Context) {
+	p := new(HelloReq)
+	if err := c.BindWith(p, binding.Default(c.Request.Method, c.Request.Header.Get("Content-Type"))); err != nil {
+		return
+	}
+	resp, err := DemoSvc.HelloWorld(c, p)
+	c.JSON(resp, err)
+}
+
 func demoSayHelloURL(c *bm.Context) {
 	p := new(HelloReq)
 	if err := c.BindWith(p, binding.Default(c.Request.Method, c.Request.Header.Get("Content-Type"))); err != nil {
@@ -72,5 +84,6 @@ func RegisterDemoBMServer(e *bm.Engine, server DemoBMServer) {
 	DemoSvc = server
 	e.GET("/demo.service.v1.Demo/Ping", demoPing)
 	e.GET("/demo.service.v1.Demo/SayHello", demoSayHello)
+	e.GET("/demo.service.v1.Demo/HelloWorld", demoHelloWorld)
 	e.GET("/kratos-demo/say_hello", demoSayHelloURL)
 }
