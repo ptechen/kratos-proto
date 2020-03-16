@@ -1,4 +1,4 @@
-module github.com/ptechen/kratos-proto
+module github.com/ptechen/kratos-proto/demo
 
 go 1.13
 
